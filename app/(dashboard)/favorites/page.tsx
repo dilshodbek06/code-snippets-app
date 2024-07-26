@@ -1,6 +1,5 @@
 import Header from "../_components/header";
 import TagsList from "../_components/tags-list";
-import CodeBlock from "../_components/code-block";
 
 const FavoritesPage = () => {
   return (

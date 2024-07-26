@@ -1,5 +1,5 @@
 const TrashPage = () => {
-  return <div>Trash</div>;
+  return <div></div>;
 };
 
 export default TrashPage;

@@ -35,7 +35,7 @@ const TagsList = () => {
             className={`px-4 py-2 text-sm md:text-base whitespace-nowrap rounded-md font-medium text-gray-600 dark:text-gray-200 hover:text-orange-500 cursor-pointer transition duration-200 ${
               a === tag.id
                 ? "bg-orange-500 hover:bg-orange-400 text-white hover:text-white"
-                : "bg-gray-50 dark:bg-inherit"
+                : "bg-gray-50 dark:bg-inherit dark:hover:text-orange-500"
             }`}
           >
             {tag.title}

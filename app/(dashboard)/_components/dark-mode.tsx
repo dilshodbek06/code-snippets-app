@@ -1,5 +1,6 @@
 "use client";
 
+import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
@@ -11,11 +12,19 @@ const DarkMode = () => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted)
+    return (
+      <Skeleton className="h-9 mt-[-6px] w-20 rounded-2xl dark:bg-slate-600" />
+    );
 
   return (
     <label className="inline-flex items-center relative">
-      <input className="peer hidden" id="toggle" type="checkbox" />
+      <input
+        checked={theme === "dark"}
+        className="peer hidden"
+        id="toggle"
+        type="checkbox"
+      />
       <div
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
         className="relative w-[74px] h-[34px] bg-white peer-checked:bg-zinc-500 rounded-full after:absolute after:content-[''] after:w-[30px] after:h-[30px] after:bg-gradient-to-r from-orange-500 to-yellow-400 peer-checked:after:from-zinc-900 peer-checked:after:to-zinc-900 after:rounded-full after:top-[2.4px] after:left-[5px] active:after:w-[30px] peer-checked:after:left-[70px] peer-checked:after:translate-x-[-100%] shadow-sm duration-300 after:duration-300 after:shadow-md"
