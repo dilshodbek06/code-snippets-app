@@ -9,7 +9,7 @@ const Header = () => {
   const { userId } = auth();
 
   return (
-    <div className="bg-white shadow-sm rounded-lg min-h-[60px] flex justify-between items-center gap-x-3 md:gap-x-1 py-1 px-2 md:px-4">
+    <div className="bg-white dark:bg-slate-800 shadow-sm rounded-lg min-h-[60px] flex justify-between items-center gap-x-3 md:gap-x-1 py-1 px-2 md:px-4">
       <div>
         <div className="hidden md:block mt-2">
           <DarkMode />

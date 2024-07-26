@@ -20,7 +20,7 @@ const SidebarItem = ({ icon: Icon, label, url }: SidebarItemProps) => {
       onClick={() => router.push(url)}
       variant={isActive ? "default" : "outline"}
       className={`w-full flex justify-start gap-2 border-0 ${
-        !isActive && "hover:bg-inherit hover:text-orange-500"
+        !isActive && "hover:bg-inherit hover:text-orange-500 dark:bg-inherit"
       } `}
     >
       <Icon className="mr-2 w-5 h-5" />
