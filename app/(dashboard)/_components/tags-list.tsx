@@ -24,7 +24,7 @@ const TagsList = () => {
       title: "Python",
     },
   ];
-  const a = 3;
+  const a = 1;
 
   return (
     <div className="min-h-[60px] bg-white dark:bg-slate-800 rounded-md py-2 px-2 md:px-4 flex justify-between items-center">
