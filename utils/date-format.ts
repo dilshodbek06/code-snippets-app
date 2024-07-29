@@ -1,10 +1,10 @@
-export function formatDateShort(createdAt: any) {
+export function formatDateShort(createdAt: string | number | Date): string {
   // Parse the date if it's not a Date object
   const date = new Date(createdAt);
-  if (isNaN(date)) throw new Error("Invalid date");
+  if (isNaN(date.getTime())) throw new Error("Invalid date");
 
   // Options for formatting the date
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     month: "short", // "Jul"
     day: "numeric", // "15"
     year: "numeric", // "2024"
