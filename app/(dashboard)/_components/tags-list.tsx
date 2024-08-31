@@ -7,7 +7,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 const TagsList = ({ items }: { items: Tag[] }) => {
-  const a = 1;
   const [selectedTag, setSelectedTag] = useState<string>("all");
 
   return (
