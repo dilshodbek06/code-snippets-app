@@ -21,31 +21,6 @@ export async function POST(req: Request) {
       return new NextResponse("User not found", { status: 404 });
     }
 
-    // const tagConnections = await Promise.all(
-    //   tags.map(async (tag: { value: string }) => {
-    //     const existingTag = await prisma.tag.findUnique({
-    //       where: {
-    //         id: tag.value,
-    //       },
-    //     });
-    //     return existingTag;
-    //   })
-    // );
-    // console.log(tagConnections, "+++");
-
-    // // Create a new snippet with the processed tags
-    // const snippet = await prisma.snippet.create({
-    //   data: {
-    //     title,
-    //     content,
-    //     language,
-    //     userId: user.id,
-    //   },
-    //   include: {
-    //     tags: true,
-    //   },
-    // });
-
     const tagIds = tags.map(
       (tag: { label: string; value: string }) => tag.value
     ); // Extract tag IDs
