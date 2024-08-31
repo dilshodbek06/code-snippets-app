@@ -6,7 +6,9 @@ const FavoritesPage = () => {
       <div>
         <Header />
       </div>
-      <div className="mt-4">{/* <TagsList items={[]} /> */}</div>
+      <div className="mt-4">
+        
+      </div>
     </div>
   );
 };
