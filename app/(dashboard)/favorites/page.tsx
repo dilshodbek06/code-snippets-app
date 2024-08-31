@@ -8,7 +8,7 @@ const FavoritesPage = () => {
         <Header />
       </div>
       <div className="mt-4">
-        <TagsList />
+        <TagsList items={[]} />
       </div>
     </div>
   );
