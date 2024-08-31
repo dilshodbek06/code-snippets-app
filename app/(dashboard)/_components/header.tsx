@@ -5,7 +5,11 @@ import SearchForm from "./search-form";
 import { auth } from "@clerk/nextjs/server";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-const Header = () => {
+interface HeaderProps {
+  isInputVisible?: boolean;
+}
+
+const Header = ({ isInputVisible }: HeaderProps) => {
   const { userId } = auth();
 
   return (
@@ -14,14 +18,18 @@ const Header = () => {
         <div className="hidden md:block mt-2">
           <DarkMode />
         </div>
+        {}
         <div className="md:hidden">
           <MobileSidebar />
         </div>
       </div>
 
-      <div className="max-w-[20rem] md:max-w-[30rem] w-full">
-        <SearchForm />
-      </div>
+      {isInputVisible && (
+        <div className="max-w-[20rem] md:max-w-[30rem] w-full">
+          <SearchForm />
+        </div>
+      )}
+
       <div>
         {userId ? (
           <UserButton />

@@ -24,6 +24,7 @@ const DarkMode = () => {
         className="peer hidden"
         id="toggle"
         type="checkbox"
+        readOnly
       />
       <div
         onClick={() => setTheme(theme === "dark" ? "light" : "dark")}

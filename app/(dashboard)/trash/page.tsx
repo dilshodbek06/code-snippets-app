@@ -1,12 +1,23 @@
 import { currentUser } from "@clerk/nextjs/server";
+import Header from "../_components/header";
+import TagsList from "../_components/tags-list";
 
 const TrashPage = async () => {
   const user = await currentUser();
 
-  console.log(user?.emailAddresses[0].emailAddress);
+  // console.log(user?.emailAddresses[0].emailAddress);
   // firstname, emailAddresses[0].emailAddress
 
-  return <div></div>;
+  return (
+    <div>
+      <div>
+        <Header />
+      </div>
+      <div className="mt-4">
+        <TagsList />
+      </div>
+    </div>
+  );
 };
 
 export default TrashPage;

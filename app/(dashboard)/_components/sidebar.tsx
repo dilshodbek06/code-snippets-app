@@ -1,6 +1,13 @@
 "use client";
 
-import { CircleFadingPlus, Heart, LogOut, Table, Trash2 } from "lucide-react";
+import {
+  CircleFadingPlus,
+  FilePlus,
+  Heart,
+  LogOut,
+  Table,
+  Trash2,
+} from "lucide-react";
 import Logo from "./logo";
 import SidebarItem from "./sidebar-item";
 import { Button } from "@/components/ui/button";
@@ -15,18 +22,24 @@ const Sidebar = () => {
     },
     {
       id: 2,
+      label: "Create",
+      url: "/create",
+      icon: FilePlus,
+    },
+    {
+      id: 3,
       label: "Favorites",
       url: "/favorites",
       icon: Heart,
     },
     {
-      id: 3,
+      id: 4,
       label: "Trash",
       url: "/trash",
       icon: Trash2,
     },
     {
-      id: 4,
+      id: 5,
       label: "Tags",
       url: "/tags",
       icon: CircleFadingPlus,
@@ -42,7 +55,7 @@ const Sidebar = () => {
       <div className="flex justify-center mt-3">
         <Logo />
       </div>
-      <div className="mt-16">
+      <div className="mt-12">
         <h2 className="font-bold text-sm text-gray-400 hover:text-gray-500">
           Quick links
         </h2>
