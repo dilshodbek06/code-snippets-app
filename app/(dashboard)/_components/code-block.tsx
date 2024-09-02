@@ -1,10 +1,10 @@
 "use client";
 
-import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { CopyBlock, nord, atomOneLight } from "react-code-blocks";
 import toast from "react-hot-toast";
+import { usePathname } from "next/navigation";
 
 interface MyCodeBlockProps {
   code: string;
@@ -15,6 +15,8 @@ const MyCodeBlock = ({ language, code }: MyCodeBlockProps) => {
   const [mounted, setMounted] = useState(false);
 
   const { theme } = useTheme();
+
+  const path = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -43,12 +45,15 @@ const MyCodeBlock = ({ language, code }: MyCodeBlockProps) => {
       </div>
     );
   }
-  //   if (mounted) {
-  //     return <Skeleton className="h-64 rounded-xl dark:bg-slate-600" />;
-  //   }
+
+  const pages = ["/", "/trash", "/favorites"];
 
   return (
-    <div className="mt-2 max-h-64 overflow-y-auto code-block-scrollbar">
+    <div
+      className={`mt-2 ${
+        pages.includes(path) && "max-h-64"
+      } overflow-y-auto code-block-scrollbar`}
+    >
       <CopyBlock
         onCopy={() => toast.success("Copied")}
         language={language}
