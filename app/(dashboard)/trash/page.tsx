@@ -47,7 +47,7 @@ const TrashPage = async () => {
   }));
 
   return (
-    <div>
+    <div className="min-h-[96.2vh]">
       <div>
         <Header />
       </div>
