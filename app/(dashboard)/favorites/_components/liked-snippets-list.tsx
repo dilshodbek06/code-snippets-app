@@ -1,6 +1,6 @@
 import { Tag } from "@prisma/client";
-import SnipCard from "./card";
-import EmptyState from "./empty-state";
+import LikedCard from "./liked-card";
+import EmptyState from "../../_components/empty-state";
 
 type SnippetWithTags = {
   id: string;
@@ -9,13 +9,13 @@ type SnippetWithTags = {
   content: string;
   createdAt: Date;
   tags: { tag: Tag }[];
-  favorites?: { snippetId: string }[];
 };
 
 interface SnippetsListProps {
   items: SnippetWithTags[];
 }
-const SnippetsList = ({ items }: SnippetsListProps) => {
+
+const LikedSnippetsList = ({ items }: SnippetsListProps) => {
   return (
     <div className="grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {items.length === 0 && (
@@ -24,7 +24,7 @@ const SnippetsList = ({ items }: SnippetsListProps) => {
         </div>
       )}
       {items?.map((item) => (
-        <SnipCard
+        <LikedCard
           key={item.id}
           title={item.title}
           createdAt={item.createdAt}
@@ -32,11 +32,10 @@ const SnippetsList = ({ items }: SnippetsListProps) => {
           tags={item.tags}
           language={item.language}
           id={item.id}
-          isLiked={item.favorites && item?.favorites[0]?.snippetId === item.id}
         />
       ))}
     </div>
   );
 };
 
-export default SnippetsList;
+export default LikedSnippetsList;

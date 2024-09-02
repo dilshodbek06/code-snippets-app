@@ -23,7 +23,7 @@ const EmptyState = () => {
       </svg>
 
       <h2 className="text-md opacity-90 font-semibold mb-2 break-words text-center">
-        you don`t have a snippet yet
+        No data found
       </h2>
       <Link href={"/create"}>
         <Button className="mt-2">+ Create</Button>

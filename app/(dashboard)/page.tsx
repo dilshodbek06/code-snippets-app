@@ -4,8 +4,13 @@ import SnippetsList from "./_components/snippets-list";
 import TagsList from "./_components/tags-list";
 import { auth } from "@clerk/nextjs/server";
 
-export default async function Home() {
+interface HomeProps {
+  searchParams: { [key: string]: string | undefined };
+}
+
+export default async function Home({ searchParams }: HomeProps) {
   const { userId } = auth();
+  const selectedTagId = searchParams?.tagId || null;
 
   const tags = await prisma.tag.findMany({
     where: {
@@ -20,6 +25,16 @@ export default async function Home() {
       user: {
         clerkId: userId!,
       },
+      trash: null,
+      ...(selectedTagId
+        ? {
+            tags: {
+              some: {
+                tagId: selectedTagId,
+              },
+            },
+          }
+        : {}),
     },
     select: {
       content: true,
@@ -30,6 +45,11 @@ export default async function Home() {
       tags: {
         select: {
           tag: true,
+        },
+      },
+      favorites: {
+        select: {
+          snippetId: true,
         },
       },
     },

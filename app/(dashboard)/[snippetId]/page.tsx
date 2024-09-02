@@ -50,7 +50,7 @@ const SnippetIdPage = async ({
         <Header isInputVisible={false} />
       </div>
       <div className="mt-5 min-h-[30rem] flex justify-center">
-        <Card className="dark:bg-slate-800 border-none max-w-[40rem] w-full p-1 sm:p-3 h-max">
+        <Card className="dark:bg-slate-800 border-none max-w-[42rem] w-full p-1 sm:p-3 h-max">
           <CardHeader className="flex gap-x-4 justify-between">
             <div>
               <CardTitle className="text-lg break-all hover:text-sky-500">

@@ -7,15 +7,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Clock, Heart, Pencil, Trash } from "lucide-react";
-import Badge from "./badge";
-import MyCodeBlock from "./code-block";
-import { formatDateShort } from "@/utils/date-format";
 import { Tag } from "@prisma/client";
+import { Clock, Heart, Pencil, Trash } from "lucide-react";
 import Link from "next/link";
-import toast from "react-hot-toast";
-import axios from "axios";
+import Badge from "../../_components/badge";
+import MyCodeBlock from "../../_components/code-block";
+import { formatDateShort } from "@/utils/date-format";
+
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import toast from "react-hot-toast";
 import { useState } from "react";
 import SpinnerLoading from "@/components/loading/spinner-loading";
 
@@ -26,47 +27,28 @@ interface SnipCardProps {
   tags: { tag: Tag }[];
   language: string;
   createdAt: Date;
-  isLiked?: boolean;
 }
-
-const SnipCard = ({
+const LikedCard = ({
   content,
   createdAt,
   id,
   language,
   tags,
   title,
-  isLiked,
 }: SnipCardProps) => {
-  //
-
   const router = useRouter();
-
   const [likedLoading, setLikedLoading] = useState(false);
-  const [trashedLoading, setTrashedLoading] = useState(false);
 
-  const handleLike = async (id: string) => {
+  const handleRemoveLiked = async (id: string) => {
     try {
       setLikedLoading(true);
-      await axios.post("/api/snippets/like", { id });
-      router.refresh();
-      setLikedLoading(false);
-      toast.success("Successfully added");
-    } catch (error) {
-      toast.error("Something went wrong");
-      setLikedLoading(false);
-    }
-  };
-  const handleTrash = async (id: string) => {
-    try {
-      setTrashedLoading(true);
-      await axios.post("/api/snippets/trash", { id });
+      await axios.post("/api/snippets/unlike", { id });
       router.refresh();
       toast.success("Successfully removed");
-      setTrashedLoading(false);
     } catch (error) {
       toast.error("Something went wrong");
-      setTrashedLoading(false);
+    } finally {
+      setLikedLoading(false);
     }
   };
 
@@ -75,7 +57,7 @@ const SnipCard = ({
       <CardHeader className="flex gap-x-4 justify-between">
         <div>
           <Link href={`/${id}`}>
-            <CardTitle className="text-md break-words hover:text-sky-500">
+            <CardTitle className="text-md break-all hover:text-sky-500">
               {title}
             </CardTitle>
           </Link>
@@ -84,10 +66,8 @@ const SnipCard = ({
           <SpinnerLoading />
         ) : (
           <Heart
-            onClick={() => handleLike(id)}
-            className={`w-9 h-7 md:w-7  cursor-pointer transition hover:text-red-600  ${
-              isLiked && "fill-red-600 text-red-600"
-            }  `}
+            onClick={() => handleRemoveLiked(id)}
+            className={`w-7 h-7 cursor-pointer transition fill-red-600 text-red-600`}
           />
         )}
       </CardHeader>
@@ -106,18 +86,11 @@ const SnipCard = ({
         </p>
         <div className="flex gap-x-3 items-center">
           <Pencil className="cursor-pointer w-5 h-5 hover:text-sky-600 transition" />
-          {trashedLoading ? (
-            <SpinnerLoading />
-          ) : (
-            <Trash
-              onClick={() => handleTrash(id)}
-              className="cursor-pointer w-5 h-5 hover:text-red-600 transition"
-            />
-          )}
+          <Trash className="cursor-pointer w-5 h-5 hover:text-red-600 transition" />
         </div>
       </CardFooter>
     </Card>
   );
 };
 
-export default SnipCard;
+export default LikedCard;
