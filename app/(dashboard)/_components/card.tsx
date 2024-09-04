@@ -75,7 +75,7 @@ const SnipCard = ({
       <CardHeader className="flex gap-x-4 justify-between">
         <div>
           <Link href={`/${id}`}>
-            <CardTitle className="text-md break-words hover:text-sky-500">
+            <CardTitle className="text-md break-words line-clamp-1 hover:text-sky-500">
               {title}
             </CardTitle>
           </Link>

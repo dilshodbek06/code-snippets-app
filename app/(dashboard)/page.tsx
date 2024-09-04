@@ -11,6 +11,7 @@ interface HomeProps {
 export default async function Home({ searchParams }: HomeProps) {
   const { userId } = auth();
   const selectedTagId = searchParams?.tagId || null;
+  const searchQuery = searchParams?.search || "";
 
   const tags = await prisma.tag.findMany({
     where: {
@@ -32,6 +33,14 @@ export default async function Home({ searchParams }: HomeProps) {
               some: {
                 tagId: selectedTagId,
               },
+            },
+          }
+        : {}),
+      ...(searchQuery
+        ? {
+            title: {
+              contains: searchQuery,
+              mode: "insensitive", // Case-insensitive search
             },
           }
         : {}),

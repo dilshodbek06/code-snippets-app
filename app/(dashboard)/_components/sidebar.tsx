@@ -75,6 +75,7 @@ const Sidebar = () => {
           onClick={handleLogout}
           variant={"outline"}
           className="w-full flex justify-start gap-2 border-0 hover:bg-inherit hover:text-orange-500 dark:bg-inherit"
+          title="This is a fake action"
         >
           <LogOut className="mr-2 w-5 h-5" />
           Log Out

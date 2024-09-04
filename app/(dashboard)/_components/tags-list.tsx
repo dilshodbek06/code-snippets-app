@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import useTagStore from "@/store/useTagStore";
 import { Tag } from "@prisma/client";
 import { Plus } from "lucide-react";
 import Link from "next/link";
