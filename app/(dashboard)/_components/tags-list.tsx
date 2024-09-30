@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Tag } from "@prisma/client";
 import { Plus } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 import { useEffect, useState } from "react";
 
 const TagsList = ({ items }: { items: Tag[] }) => {
