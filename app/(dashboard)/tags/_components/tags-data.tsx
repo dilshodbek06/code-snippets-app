@@ -2,7 +2,7 @@
 
 import { Tag } from "@prisma/client";
 import axios from "axios";
-import { PencilIcon, X } from "lucide-react";
+import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
@@ -22,11 +22,7 @@ const TagsData = ({ items }: TagsDataProps) => {
       toast.error("Something went wrong");
     }
   };
-  // const handleUpdate = async (tag: Tag) => {
-  //   setEditingId(tag.id);
-  //   setIsEdit(true);
-  //   setTagName(tag.name);
-  // };
+
   return (
     <div className="p-3 mt-2 bg-white dark:bg-slate-800 rounded-md flex flex-wrap items-center justify-between sm:justify-normal gap-2 gap-y-3 sm:gap-4">
       {items?.map((tag) => (
@@ -36,10 +32,6 @@ const TagsData = ({ items }: TagsDataProps) => {
         >
           {tag.name}
           <div className="flex gap-x-1 ml-2">
-            <PencilIcon
-              // onClick={() => handleUpdate(tag)}
-              className="w-5 h-5 cursor-pointer hover:text-sky-600 transition"
-            />
             <X
               onClick={() => handleDelete(tag.id)}
               className="w-5 h-5 cursor-pointer hover:text-red-600 transition"

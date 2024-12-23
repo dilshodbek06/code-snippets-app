@@ -51,10 +51,11 @@ const MyCodeBlock = ({ language, code }: MyCodeBlockProps) => {
   return (
     <div
       className={`mt-2 ${
-        pages.includes(path) && "max-h-64"
+        pages.includes(path) && "max-h-64  "
       } overflow-y-auto code-block-scrollbar`}
     >
       <CopyBlock
+        customStyle={{ minHeight: "16rem", paddingRight: "20px" }}
         onCopy={() => toast.success("Copied")}
         language={language}
         text={code}

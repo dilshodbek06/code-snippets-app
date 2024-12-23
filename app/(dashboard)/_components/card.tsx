@@ -72,7 +72,7 @@ const SnipCard = ({
 
   return (
     <Card className="dark:bg-slate-800 border-none">
-      <CardHeader className="flex gap-x-4 justify-between">
+      <CardHeader className="flex items-center gap-x-4 justify-between py-2">
         <div>
           <Link href={`/${id}`}>
             <CardTitle className="text-md break-words line-clamp-1 hover:text-sky-500">
@@ -80,16 +80,20 @@ const SnipCard = ({
             </CardTitle>
           </Link>
         </div>
-        {likedLoading ? (
-          <SpinnerLoading />
-        ) : (
-          <Heart
-            onClick={() => handleLike(id)}
-            className={`w-9 h-7 md:w-7  cursor-pointer transition hover:text-red-600  ${
-              isLiked && "fill-red-600 text-red-600"
-            }  `}
-          />
-        )}
+        <div>
+          {likedLoading ? (
+            <SpinnerLoading />
+          ) : (
+            <Heart
+              onClick={() => !isLiked && handleLike(id)}
+              className={`w-6 h-6  transition   hover:text-red-600 ${
+                isLiked
+                  ? "fill-red-600 text-red-600 cursor-default"
+                  : "cursor-pointer"
+              }  `}
+            />
+          )}
+        </div>
       </CardHeader>
       <CardContent>
         <div className="flex gap-x-1 whitespace-nowrap overflow-x-auto scrollbar-hide">
